@@ -1,17 +1,17 @@
 # Tutorial de CSS
 
-CSS, Cascading Style Sheets, u Hojas de Estilo en Cascada, es un **lenguaje de hojas de estilo** utilizado para dar formato y estilo a un documento web, generalmente en HTML.
+CSS, Cascading Style Sheets, u Hojas de Estilo en Cascada, es un **lenguaje de hojas de estilo** utilizado para dar formato y estilo a un documento o página web. Generalmente se aplica sobre HTML.
 
-Una hoja de estilo es un archivo, o de manera general un bloque de texto (por que CSS podría formar parte de archivos con otros contenidos, como HTML), con instrucciones para renderizar una página web. El navegador lee el documento HTML para tener la estructura, significado y contenido de la información en general, y luego lee el documento CSS para saber cómo presentar ese contenido, y por ende la página web, al usuario.
+Una hoja de estilo es un archivo, o de manera general un bloque de texto (por que CSS podría estar incluido en archivos que también tengan otro tipo de contenido, por ejemplo HTML), con instrucciones para renderizar una página web. El navegador lee el documento HTML para tener la estructura, significado y contenido de la información en general, y luego lee el documento CSS para saber cómo presentar ese contenido, y por ende la página web, al usuario.
 
-El término Cascading (en cascada), se refiere a la forma como las instrucciones son aplicadas al documento. Estas instrucciones pueden venir de varias fuentes o de varias hojas de estilo. Unas vienen ya con el navegador, otras las puso el desarrollador, e incluso el usuario puede de alguna manera indicar ciertas preferencias. Estos orígenes se clasifican por especificidad e importancia para aplicarse a los elementos del html, y también el orden en el cual aparecen las instrucciones afectará. Más aún, los estilos que se aplican a un elemento, pueden tener efecto sobre sus elementos hijos cuando la propiedad es compatible.
+El término Cascading (en cascada), se refiere a la forma como las instrucciones son aplicadas al documento. Estas instrucciones pueden venir de varias fuentes o de varias hojas de estilo. Unas forman parte del navegador, otras las puso el desarrollador del sitio web, y otras puededn haber sido proporcionadas incluso por el usuario. Estos orígenes o fuentes se clasifican según su especificidad e importancia para luego aplicarse a los elementos del html. El orden en el cual aparecen las instrucciones en las hojas afectará también este proceso. Más aún, los estilos que se aplican a un elemento, pueden tener efecto o transmitirse a sus elementos hijos cuando la propiedad es compatible.
 
-El algoritmo de cascada aplicado por los navegadores puede ser muy complejo. En [este link](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade) puede obtener más información.
+El algoritmo de cascada aplicado por los navegadores puede ser muy complejo. [En este link puede obtener más información](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade).
 
 
 ## Reglas
 
-Una hoja de estilo CSS está forma por un grupo de reglas de estilo. Las reglas tienen como sintaxis de base las siguientes:
+Una hoja de estilo CSS está formada por un grupo de reglas de estilo. Las reglas tienen como sintaxis de base la siguiente:
 
 ```css
 /* 1 */
@@ -21,8 +21,10 @@ selector {
 ```
 
 >- En primer lugar se escribe un selector que indica los elementos html que se van a seleccionar para aplicar el formato.
->- Luego, entre llaves (`{ ... }`) se indica la declaración, es decir la propiedad que se va a afectar, seguida de dos puntos (`:`) y seguido del valor que se pondrá a la propiedad, terminada por punto y coma (`;`).
+>- Luego, entre llaves (`{ ... }`) se indica la declaración, es decir la propiedad que se va a modificar, seguida de dos puntos (`:`), seguidos del valor que se pondrá a la propiedad, terminando la declaración por punto y coma (`;`).
 >- Pueden ponerse comentarios, de preferencia en su propia línea, entre los símbolos `/*` y `*/` (como en C o Java).
+
+Una alternativa muy utilizada para agrupar reglas es:
 
 ```css
 /* 2 */
@@ -33,7 +35,7 @@ selector {
 }
 ```
 
->- Se puede aplicar o modificar varias propiedades dentro de una misma regla. Basta con poner todas las propiedades con sus valores dentro de las llaves, cuidando siempre de que cada propiedad:valor finalice con punto y coma. 
+>- Se puede incluir varias propiedades dentro de una misma regla. Basta con poner todas las propiedades con sus valores dentro de las llaves, cuidando siempre de que cada *propiedad:valor* finalice con punto y coma. 
 
 Un ejemplo de regla a continuación:
 
@@ -131,12 +133,56 @@ a:visited {
     color: green;
 }
 ```
-y la siguiente aquellos sobre los cuales está pasando el mouse:
+y la siguiente regla selecciona aquellos vínculos   sobre los cuales está pasando el mouse:
 ```css
 a:hover {
     color: gray;
 }
 ```
 
+Las reglas, entonces, seleccionan elementos en el documento HTML, para establecer o cambiar los valores de sus propiedades.
+
 [Familiarísese con todos los tipos de selectores.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
+
+[Familiarísese con todas las propiedades.](https://www.w3schools.com/cssref/)
+
+### Box model
+
+Todos los elementos HTML se representan en el navegador como una caja (box) rectangular. Estas cajas responden a un modelo (model) específico, que les otorga ciertas propiedades comunes. Esto es lo que se conoce como el *Box model*.
+
+El box model consta de cuatro áreas, cada una delimitada por su propio límite (edge). Tanto el área como su límite tienen propiedades que pueden modificarse:
+
+- **Contenido.** es donde va el contenido relevante del elemento. Si es un párrafo, por ejemplo, es el texto.
+
+- **Relleno (padding).** es un espacio interno, entre el contenido y el borde.
+
+- **Borde.**  es un rectángulo que marca el límite del contenido (y su relleno) y que se puede visualizar como cuatro líneas que demarcan la caja.
+
+- **Margen.** es un espacio externo, que va más allá del borde, y que separa a este elemento de los otros elementos que lo rodean en la página.
+
+
+
+![Box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model/boxmodel-(3).png)
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model
+
+### Responsive design
+
+https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+
+### Flexbox
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout
+
+### Grid
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+
+### Viewport
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts
+
+### Media queries
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries
 
