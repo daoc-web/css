@@ -150,21 +150,48 @@ Las reglas, entonces, seleccionan elementos en el documento HTML, para establece
 
 Todos los elementos HTML se representan en el navegador como una caja (box) rectangular. Estas cajas responden a un modelo (model) específico, que les otorga ciertas propiedades comunes. Esto es lo que se conoce como el *Box model*.
 
-El box model consta de cuatro áreas, cada una delimitada por su propio límite (edge). Tanto el área como su límite tienen propiedades que pueden modificarse:
+El box model consta de cuatro áreas, cada una con sus propiedades que pueden modificarse:
 
-- **Contenido.** es donde va el contenido relevante del elemento. Si es un párrafo, por ejemplo, es el texto.
+- **Contenido,** es donde va el contenido relevante del elemento. Si es un párrafo, por ejemplo, es el texto.
+    - Sus propiedades más relevantes (con respecto al modelo) son `width` y `height`.
+    - Al asignar valor a estas propiedades, solo consideran el contenido (ni el relleno ni el borde). Esto se debe a que por defecto los elementos tienen la propiedad `box-sizing` igual a `content-box`.
+    - Si se cambia la propiedad `box-sizing` a `border-box`, los valores de `width` y `height` considerarán o incluirán también el relleno y el borde
+        - ciertos (pocos) elementos como `table` o `input`, tienen este valor por defecto.
 
-- **Relleno (padding).** es un espacio interno, entre el contenido y el borde.
+- **Relleno (padding),** es un espacio interno, entre el contenido y el borde.
+    - El tamaño del relleno puede controlarse con la propiedad `padding`, la cual permite modificar todo el padding por igual, o de manera independiente los cuatro (top, right, bottom, left).
 
-- **Borde.**  es un rectángulo que marca el límite del contenido (y su relleno) y que se puede visualizar como cuatro líneas que demarcan la caja.
+- **Borde,**  es un rectángulo que marca el límite del contenido (y su relleno) y que se puede visualizar como cuatro líneas que demarcan la caja.
+    - Sus propiedades más relevantes pueden modificarse con `border-color`, `border-style` y `border-width`.
 
-- **Margen.** es un espacio externo, que va más allá del borde, y que separa a este elemento de los otros elementos que lo rodean en la página.
-
-
+- **Margen,** es un espacio externo, que va más allá del borde, y que separa a este elemento de los otros elementos que lo rodean en la página.
+   - El tamaño del margen puede controlarse con la propiedad `margin`, la cual permite modificar todo el margen por igual, o de manera independiente los cuatro (top, right, bottom, left).
 
 ![Box model](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model/boxmodel-(3).png)
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model
+[Conozca más sobre el Box model.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model)
+
+### Posicionamiento
+
+Los elementos deben ubicarse en algún lugar del documento. Esta ubicación generalmente está dada por la ubicación del elemento en el html, es decir ajustándose al *flujo normal* del documento, o puede modificarse bajo ciertas condiciones.
+
+La propiedad relevante es `position`, y su valor por defecto es `static`. En este caso no hay modificaciones que se puedan aplicar. Hay, sin embargo, otros valores de la propiedad que permiten variaciones interesantes:
+
+- `relative`, primero ubica al elemento en su posición por defecto, y luego lo desplaza, relativo a dicha posición, de acuerdo a los valores de las propiedades `top`, `right`, `bottom` y `left`.
+
+- `absolute`, se retira al elemento de su posición por defecto, como si no estuviera ahí, y se lo ubica en una posición relativa a aquella de su ascendiente (padre generalmente) más cercano. El desplazamiento con respecto al elemento padre se determina por las propiedades `top`, `right`, `bottom` y `left`. 
+
+- `fixed`, se retira al elemento de su posición por defecto, como si no estuviera ahí, y se lo ubica en una posición relativa a aquella del contenedor principal, generalmente la página. El desplazamiento con respecto a la página se determina por las propiedades `top`, `right`, `bottom` y `left`. Esta propiedad suele ocasionar que el elemento permanezca en una posición fija en la página, aunque el resto se desplaze al hacer scrolling.
+
+- `sticky`, primero ubica al elemento en su posición por defecto, y luego lo desplaza, en una posición relativa a aquella de su contenedor más cercano con capacidades de "scrolling". El desplazamiento con respecto al elemento padre se determina por las propiedades `top`, `right`, `bottom` y `left`. Esta propiedad suele ocasionar que el elemento permanezca en una posición fija en su contenedor, aunque el resto se desplaze al hacer scrolling. Esta posición "fija" variará, sin embargo, al cruzar ciertos límites (es una especie de *fixed-relative* si se quiere).
+
+[Conozca más sobre el posicionamiento.](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
+
+### Normal flow: Block o Inline
+
+
+
+[Conozca más sobre el layout del documento.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout)
 
 ### Responsive design
 
