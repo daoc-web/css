@@ -171,6 +171,23 @@ El box model consta de cuatro áreas, cada una con sus propiedades que pueden mo
 
 [Conozca más sobre el Box model.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model)
 
+
+### Normal flow: Block o Inline
+
+Antes de que a los elementos de una página web se les aplique cualquier tipo de modificación de estilo, son ubicados en el documento en lo que se conoce como el "flujo normal". Esto brinda el layout de base sobre el cual empezarán a aplicarse los cambios de posición o formato.
+
+Todos los elementos tienen un "flujo" por defecto, el cual viene dado por la propiedad `display`, la cual tiene dos valores fundamentales: `block` e `inline`.
+
+Los elementos de tipo `block` se posicionan verticalmente, uno bajo el otro. Figurativamente, es como si su caja ocupara todo el espacio horizontal de la página (como si, por que la caja solo ocupa el espacio necesario). Adicionalmente, luego de cada elemento se añada una línea adicional de espacio, separándolo del siguiente. [Aquí tiene una lista de los elementos tipo `block`.](https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements#elements)
+
+Los elementos de tipo `inline` se posicionan horizontalmente, uno junto al otro, mientras haya espacio disponible, y solo luego se desplazarán verticalmente, o a ls siguiente fila de elementos. Su caja ocupa exclusivamente el espacio necesario para su contenido (literal y figurativamente). Ningún espacio adicional se añade para separar a los elementos entre ellos. [Aquí tiene una lista de los elementos tipo `inline`.](https://developer.mozilla.org/en-US/docs/Web/HTML/Inline_elements#list_of_inline_elements)
+
+El valor de la propiedad `display` puede modificarse para cualquier elemento.
+
+> **Bloque flotante**. Los elementos pueden sacarse de su flujo normal,alineándose hacia el borde izquierdo o derecho de su contenedor, y permitiendo que otros elementos como texto por ejemplo, se ajusten o peguen a ellos adaptándose a su caja. Esto se define con la propiedad `float` que por defecto tiene el valor `none`, pero que puede modificarse con `left` o `right`.
+
+[Conozca más sobre el layout del documento.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout)
+
 ### Posicionamiento
 
 Los elementos deben ubicarse en algún lugar del documento. Esta ubicación generalmente está dada por la ubicación del elemento en el html, es decir ajustándose al *flujo normal* del documento, o puede modificarse bajo ciertas condiciones.
@@ -186,12 +203,6 @@ La propiedad relevante es `position`, y su valor por defecto es `static`. En est
 - `sticky`, primero ubica al elemento en su posición por defecto, y luego lo desplaza, en una posición relativa a aquella de su contenedor más cercano con capacidades de "scrolling". El desplazamiento con respecto al elemento padre se determina por las propiedades `top`, `right`, `bottom` y `left`. Esta propiedad suele ocasionar que el elemento permanezca en una posición fija en su contenedor, aunque el resto se desplaze al hacer scrolling. Esta posición "fija" variará, sin embargo, al cruzar ciertos límites (es una especie de *fixed-relative* si se quiere).
 
 [Conozca más sobre el posicionamiento.](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
-
-### Normal flow: Block o Inline
-
-
-
-[Conozca más sobre el layout del documento.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout)
 
 ### Responsive design
 
