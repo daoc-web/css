@@ -1,10 +1,14 @@
+---
+lang: es
+---
+
 # Tutorial de CSS
 
 CSS, Cascading Style Sheets, u Hojas de Estilo en Cascada, es un **lenguaje de hojas de estilo** utilizado para dar formato y estilo a un documento o página web. Generalmente se aplica sobre HTML.
 
 Una hoja de estilo es un archivo, o de manera general un bloque de texto (por que CSS podría estar incluido en archivos que también tengan otro tipo de contenido, por ejemplo HTML), con instrucciones para renderizar una página web. El navegador lee el documento HTML para tener la estructura, significado y contenido de la información en general, y luego lee el documento CSS para saber cómo presentar ese contenido, y por ende la página web, al usuario.
 
-El término Cascading (en cascada), se refiere a la forma como las instrucciones son aplicadas al documento. Estas instrucciones pueden venir de varias fuentes o de varias hojas de estilo. Unas forman parte del navegador, otras las puso el desarrollador del sitio web, y otras puededn haber sido proporcionadas incluso por el usuario. Estos orígenes o fuentes se clasifican según su especificidad e importancia para luego aplicarse a los elementos del html. El orden en el cual aparecen las instrucciones en las hojas afectará también este proceso. Más aún, los estilos que se aplican a un elemento, pueden tener efecto o transmitirse a sus elementos hijos cuando la propiedad es compatible.
+El término Cascading (en cascada), se refiere a la forma como las instrucciones son aplicadas al documento. Estas instrucciones pueden venir de varias fuentes o de varias hojas de estilo. Unas forman parte del navegador, otras las puso el desarrollador del sitio web, y otras pueden haber sido proporcionadas incluso por el usuario. Estos orígenes o fuentes se clasifican según su especificidad e importancia para luego aplicarse a los elementos del html. El orden en el cual aparecen las instrucciones en las hojas afectará también este proceso. Más aún, los estilos que se aplican a un elemento, pueden tener efecto o transmitirse a sus elementos hijos cuando la propiedad es compatible.
 
 El algoritmo de cascada aplicado por los navegadores puede ser muy complejo. [En este link puede obtener más información](https://developer.mozilla.org/en-US/docs/Web/CSS/Cascade).
 
@@ -142,9 +146,9 @@ a:hover {
 
 Las reglas, entonces, seleccionan elementos en el documento HTML, para establecer o cambiar los valores de sus propiedades.
 
-[Familiarísese con todos los tipos de selectores.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
+[Familiarícese con todos los tipos de selectores.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors)
 
-[Familiarísese con todas las propiedades.](https://www.w3schools.com/cssref/)
+[Familiarícese con todas las propiedades.](https://www.w3schools.com/cssref/)
 
 ### Box model
 
@@ -204,23 +208,156 @@ La propiedad relevante es `position`, y su valor por defecto es `static`. En est
 
 [Conozca más sobre el posicionamiento.](https://developer.mozilla.org/en-US/docs/Web/CSS/position)
 
-### Responsive design
+## Diseño web adaptable (Responsive Web Design, RWD)
 
-https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design
+En la actualidad, la variedad de dispositivos en los cuales deberá presentarse una página web es enorme. Las diferencias sobre todo en lo que respecta con el tamaño y la resolución de las pantallas, obliga a que el diseño no pueda ser estático (enfocado a un solo tamaño y resolución) sino adaptable.
 
-### Flexbox
+El diseño adaptable o "Responsive" (RWD), es una serie de guías, prácticas, técnicas y elementos, que permiten a la página web adaptarse de manera grácil y amigable con el usuario, a diferentes tamaños y resoluciones de pantallas.
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout
+Si bien el RWD consta de muchos conceptos, hay cuatro que son tal vez los más relevantes: cuadrículas, imágenes y texto fluidos o adaptables, y media queries.
 
-### Grid
+> Otro elemento importante relacionado con RWD es el Viewport, el cual es una "meta" etiqueta HTML, y lo puede revisar [aquí](https://github.com/dordonez-ute-apweb/html#viewport).
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout
+### Imágenes adaptables
 
-### Viewport
+Una de las técnicas más sencillas es poner la propiedad `max-width` de las imágenes al 100%. Esto permitirá que, si el espacio disponible es limitado, la imagen se achique para adaptarse. Sin embargo, nunca sobrepasará su tamaño real.
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts
+```css
+img {
+  max-width: 100%;
+}
+```
+
+### Texto adaptable
+
+Al indicar el tamaño del texto que se usará en una parte del documento, siempre es preferible usar medidas relativas (em, rem, vw), en lugar de medidas fijas (px, mm, cm, ...).
+
+- `rem` es una medida relativa al tamaño de la fuente del elemento raíz del documento (generalmente `html`). Si dicho valor no ha sudo definido, se usa el tamano de fuente por defecto del browser (que suele ser 16px). `1rem` indica que la medida es igual, `2rem` que es el doble, `0.5rem` que es la mitad, y así. Esta es una medida más predecible dado que se basa en un valor único.
+    ```css
+    h1 {
+        font-size: 3em;
+    }
+    ```
+- `em` es una medida relativa al tamaño de la fuente del contenedor inmediato, que se comporta com `rem`. Esta medida, al ser más local dado que el contenedor padre variará, permite controlar de mejor manera la adaptabilidad de ciertas secciones del documento. Sin embargo, al combinarse de contenedor en contenedor, puede tener efectos indeseables, como texto muy pequeño o muy grande.
+    ```css
+    h1 {
+        font-size: 2em;
+    }
+    ```
+- `vw` es una medida relativa al ancho del viewport. `1vw` equivale a 1% de su ancho. El inconveniente de esta medida es que al usarla no permite hacer zoom del texto definido así.
+    ```css
+    h1 {
+        font-size: 5vw;
+    }
+    ```
+- `calc(?rem + ?vw)` es una alternativa muy flexible que combina `rem` y `vw` gracias a la función `calc`. Esto combina una parte a la que se puede hacer zoom (`rem`) a la cual se añade un valor adicional (`vw`).
+    ```css
+    h1 {
+        font-size: calc(1.5rem + 3vw);
+    }
+    ```
+[Conozca más sobre el diseño adaptable.](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design)
 
 ### Media queries
 
-https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries
+Este es probablemente el componente que hace posible el diseño adaptable en general. Permite efectuar un test sobre las condiciones del dispositivo, como tamaño y resolución de la pantalla, y dependiendo de ellas aplicar selectivamente ciertas reglas u hojas de estilo.
+
+Se utiliza mediante la regla `@media`, luego de la cual se indican los tipos de media y las características de los mismos. Finalmente se incljuye un bloque CSS que aplicará solo si las condiciones se cumplen. Un ejemplo:
+
+```css
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  /* … */
+}
+
+```
+> Esta media query indica que el bloque CSS se aplicará solo si el tipo de media es pantalla, si el ancho mínimo de dicha pantalla es 1024 pixeles, y si el dispositivo está orientado horizontalmente.
+
+Los tipos de medio pueden ser `all`, que indica que cualquier medio es aceptado, `print` y `screen`.
+
+Las características hay en gran número ([revíselas](https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_features)), pero en general nos interesa aquellas relacionadas con las pantallas, como `(min|max)-width`, `orientation` y `(min|max)-resolution`.
+
+Los tipos y las características se pueden combinar mediante los operadores `and` y `not`, y pueden presentarse en una lista separada por comas. Si cualquier elemento de la lista se valida, se aplicará el bloque CSS. Un ejemplo:
+```css
+@media (min-width: 640px), screen and (not orientation: portrait) {
+  /* … */
+}
+```
+> Esta regla se validará si ocurre cualquiera de dos cosas (como un operador "or"): el ancho mínimo del medio (cualquier medio) es 640 pixeles, por un lado, o el medio es pantalla y la orientación NO es vertical, por otro lado.
+
+[Conozca más sobre las media queries.](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries)
+
+### Cuadrículas adaptables
+
+Las cuadrículas adaptables permiten reducir el número de media queries que se efectúan, y por ende el número de CSSs que hay que diseñar. Al usar cuadrículas adaptables, estas maximizan el uso del espacio disponible, distribuyendo de la mejor manera sus elementos internos, y reaccionando inmediatamente a cambios en el tamaño de la visualización que puedan ocasionarse, por ejemplo, por el usuario al redimensionar la ventana del browser.
+
+Las técnicas que más se usan actualmente son el diseño multicolumna, las flexbox y las grid.
+
+#### Diseño multicolumna
+
+Utiliza principalmente la propiedad `column-count` para distribuir automáticamente el contenido del elemento indicado, en el número de columnas especificadas.
+
+```css
+.columnas {
+  column-count: 3;
+}
+```
+> Esta instrucción haría que todos los elementos pertenecientes a la clase `columnas` distribuyan su contenido en tres columnas.
+
+Alternativamente puede utilizarse la propiedad `column-width`, indicando un valor en pixeles. El sistema creará tantas columnas como sean necesarias, cada una del ancho indicado (o lo más cercano posible), para llenar el espacio disponible.
+
+Otras propiedades como `column-gap` o `column-rule` existen, que facilitan el formateo de las columnas.
+
+[Familiarícese con estas propiedades.](https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Multiple-column_Layout)
+
+#### Flexbox
+
+Permite distribuir los elementos dentro de un contenedor en una sola dimensión, sea esta horizontal o vertical.
+
+Para crear un contenedor flex, hay que cambiar su propiedad `display` al valor `flex`. Todos los elementos hijos del contenedor se convierten automáticamente en items flex, y serán distribuidos de acuerdo a las reglas del flexbox.
+
+Dado que el flexbox solo actúa en una dimensión, hay que especificar la orientación de los items con la propiedad `flex-direction`, que puede tomar los valores `row` (izquierda a derecha), `row-reverse` (derecha a izquierda), `column` (arriba hacia abajo) o `column-reverse` (abajo hacia arriba). El valor por defecto es `row`.
+
+[Familiarícese con el flexbox.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout)
+
+#### Grid
+
+Este es probablemente el más flexible, y por ello también el más usado, de los elementos para crear cuadrículas adaptables. Es similar al flexbox, pero ya trabaja en dos dimensiones, lo que le permite ubicar sus elementos tanto en filas como en columnas, o en celdas si se prefiere.
+
+Para crear un contenedor grid, hay que cambiar su propiedad `display` al valor `grid` o `inline-grid`. Todos los elementos hijos del contenedor se convierten automáticamente en items grid.
+
+Para definir cuántas columnas o filas deberá tener la cuadrícula, se usan las propiedades `grid-template-columns` y `grid-template-rows`, las cuales funcionan muy parecido, y en general solo hay que usar una de ellas. Es decir, si se define un número específico de columnas, se crearán cuantas filas sean necesarias para albergar a todos los grid items.
+
+Para indicar cuántas columnas tendrá la cuadrícula (para filas será igual), se especifica el ancho de cada una de ellas:
+
+```css
+.rejilla {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+```
+
+> Cualquier elemento en la clase `rejilla` se convierte en una cuadrícula, gragias a `display: grid`. `grid-template-columns: 1fr 1fr 1fr` indica que habrán tres columnas, la del medio del doble del ancho que las otras dos.
+>> `fr` es una medida relativa que otorga una fracción del espacio disponible.
+
+Cuando varias columnas seguidas tienen la misma medida, se puede usar `repeat`:
+
+```css
+grid-template-columns: 20px repeat(6, 1fr) 30px;
+```
+
+> Aquí se indica que primero habrá una columna de 20 pixeles, luego habrán 6 columnas de 1fr, y finalmente una columna de 30 pixeles, 8 columnas en total.
+
+Los grid items por defecto se posicionarán dentro de las celdas en el orden en que fueron definidos en el html. Sin embargo, puede indicarse exactamente en qué posición deberán ir, con las propiedades `grid-column` y `grid-row`, en cada grid item.
+
+```css
+.caja1 {
+    grid-column: 2;
+    grid-row: 5;
+}
+```
+
+> `caja1` se ubicará en la celda en la intersección de la columna 2 y de la fila 5
+
+[Familiarícese con el grid.](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout)
+
 
